@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Check } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 import { about, site } from '../data/site'
@@ -20,12 +21,12 @@ export default function About() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/75">{about.blurb}</p>
 
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-accent-dark"
           >
             Start Your Project
-          </a>
+          </Link>
         </div>
 
         <ul className="grid gap-4 sm:grid-cols-2">

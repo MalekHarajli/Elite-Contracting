@@ -172,10 +172,7 @@ export const serviceOptions = [
 ] as const
 
 export const nav = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Areas', href: '#areas' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Contact', to: '/contact' },
 ] as const

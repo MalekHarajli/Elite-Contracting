@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Phone, ArrowRight, Star } from 'lucide-react'
 import { site, hero } from '../data/site'
 import { heroImage } from '../data/portfolio'
@@ -33,13 +34,13 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{hero.subhead}</p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-base font-semibold text-white shadow-xl shadow-accent/25 transition-all hover:bg-accent-dark"
             >
               Get a Free Quote
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </a>
+            </Link>
             <a
               href={site.phoneHref}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"

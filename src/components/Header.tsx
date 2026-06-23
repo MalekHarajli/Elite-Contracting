@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Phone, Menu, X } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
+import { Phone, Menu, X, Instagram } from 'lucide-react'
 import { site, nav } from '../data/site'
 
 export default function Header() {
@@ -27,7 +28,7 @@ export default function Header() {
         }`}
       >
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3" aria-label={`${site.name} home`}>
+        <Link to="/" className="flex items-center gap-3" aria-label={`${site.name} home`}>
           <img
             src="/logo.png"
             alt={`${site.name} logo`}
@@ -36,23 +37,38 @@ export default function Header() {
           <span className="heading hidden text-lg leading-none text-white sm:block">
             ELITE<span className="text-accent"> CONTRACTING</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors hover:text-white ${
+                  isActive ? 'text-accent' : 'text-white/80'
+                }`
+              }
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
-        {/* Call CTA + mobile toggle */}
+        {/* Instagram + Call CTA + mobile toggle */}
         <div className="flex items-center gap-3">
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Elite Contracting on Instagram"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-accent hover:text-accent"
+          >
+            <Instagram className="h-5 w-5" aria-hidden="true" />
+          </a>
+
           <a
             href={site.phoneHref}
             className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent-dark hover:shadow-accent/30"
@@ -82,15 +98,29 @@ export default function Header() {
         >
           <div className="container-px flex flex-col py-2">
             {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === '/'}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-white/5 py-3 text-base font-medium text-white/80 transition-colors hover:text-white"
+                className={({ isActive }) =>
+                  `border-b border-white/5 py-3 text-base font-medium transition-colors hover:text-white ${
+                    isActive ? 'text-accent' : 'text-white/80'
+                  }`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-2 py-3 text-base font-medium text-white/80 transition-colors hover:text-white"
+            >
+              <Instagram className="h-5 w-5" aria-hidden="true" /> Instagram
+            </a>
           </div>
         </nav>
       )}

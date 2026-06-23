@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Phone, Mail, Instagram } from 'lucide-react'
 import { site, nav, areas } from '../data/site'
 
@@ -8,12 +9,12 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <a href="#home" className="flex items-center gap-3" aria-label={`${site.name} home`}>
+            <Link to="/" className="flex items-center gap-3" aria-label={`${site.name} home`}>
               <img src="/logo.png" alt={`${site.name} logo`} className="h-11 w-auto" />
               <span className="heading text-lg text-white">
                 ELITE<span className="text-accent"> CONTRACTING</span>
               </span>
-            </a>
+            </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
               {site.tagline}. Treating every home like our own across Dearborn Heights and Metro
               Detroit.
@@ -41,10 +42,10 @@ export default function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-white/45">Explore</h3>
             <ul className="mt-4 space-y-2.5">
               {nav.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} className="text-sm text-white/70 transition-colors hover:text-white">
+                <li key={item.to}>
+                  <Link to={item.to} className="text-sm text-white/70 transition-colors hover:text-white">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
