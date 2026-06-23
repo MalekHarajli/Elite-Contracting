@@ -1,10 +1,13 @@
 /* =============================================================================
- * Optional hero background image — AUTO-LOADED.
+ * Hero background image — AUTO-LOADED, with a hand-picked fallback.
  * -----------------------------------------------------------------------------
- * Drop ONE high-resolution photo (jpg / png / webp) into  src/assets/hero/
- * and it automatically becomes the darkened hero background on the home page.
- * If the folder is empty, the hero falls back to a clean design background.
- * Tip: use a wide (landscape) image, ideally 2000px+ across, for a crisp look.
+ * 1. Drop ONE photo (jpg / png / webp) into  src/assets/hero/  and it becomes
+ *    the hero background automatically (this always wins).
+ * 2. If that folder is empty, the site uses the hand-picked, license-free
+ *    photo below (served from Unsplash's CDN — free for commercial use).
+ *
+ * To use a different stock photo, just replace FALLBACK_HERO_URL with any
+ * direct image URL, or drop a file into src/assets/hero/.
  * ===========================================================================*/
 
 const modules = import.meta.glob('../assets/hero/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', {
@@ -14,5 +17,9 @@ const modules = import.meta.glob('../assets/hero/*.{png,jpg,jpeg,webp,PNG,JPG,JP
 
 const keys = Object.keys(modules).sort()
 
-/** First image found in src/assets/hero/, or '' if none has been added yet. */
-export const heroBg = keys.length ? modules[keys[0]] : ''
+/** Hand-picked modern luxury home (Unsplash License — free for commercial use). */
+const FALLBACK_HERO_URL =
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80'
+
+/** Local file in src/assets/hero/ if present, otherwise the picked stock photo. */
+export const heroBg = keys.length ? modules[keys[0]] : FALLBACK_HERO_URL

@@ -1,27 +1,35 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, ArrowRight, Star } from 'lucide-react'
 import { site, hero } from '../data/site'
 import { heroBg } from '../data/heroBg'
 
 export default function Hero() {
+  // If the photo fails to load, we silently fall back to the design background.
+  const [showPhoto, setShowPhoto] = useState(Boolean(heroBg))
+
   return (
     <section id="home" className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-ink">
-      {/* Background: a real photo (if added to src/assets/hero/) darkened for text,
-          otherwise a sharp design background — never a stretched low-res photo. */}
-      {heroBg ? (
-        <div className="absolute inset-0 -z-10" aria-hidden="true">
-          <img src={heroBg} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
-        </div>
-      ) : (
-        <div className="absolute inset-0 -z-10" aria-hidden="true">
-          <div className="dot-grid absolute inset-0 opacity-60" />
-          <div className="absolute -right-32 -top-32 h-[560px] w-[560px] rounded-full bg-accent/25 blur-[130px]" />
-          <div className="absolute -bottom-40 left-1/4 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[120px]" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
-        </div>
-      )}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        {/* Sharp design background — always present as the base layer */}
+        <div className="dot-grid absolute inset-0 opacity-60" />
+        <div className="absolute -right-32 -top-32 h-[560px] w-[560px] rounded-full bg-accent/25 blur-[130px]" />
+        <div className="absolute -bottom-40 left-1/4 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[120px]" />
+
+        {/* Photo background — covers the design layer when it loads successfully */}
+        {showPhoto && (
+          <img
+            src={heroBg}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+            onError={() => setShowPhoto(false)}
+          />
+        )}
+
+        {/* Legibility overlays — work over either background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
+      </div>
 
       <div className="container-px w-full py-32 pt-40">
         <div className="max-w-3xl">
