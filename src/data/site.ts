@@ -34,7 +34,7 @@ export const site = {
 export const hero = {
   headline: 'Built to a Higher Standard.',
   subhead:
-    'High-end remodeling and construction for Metro Detroit homeowners who refuse to compromise.',
+    'Your trusted home remodeling contractor for Metro Detroit homeowners who refuse to compromise — kitchens, baths, basements, additions and full renovations.',
   trustLine: '5.0 ★ on Google · 13 Reviews · Serving Metro Detroit',
 } as const
 

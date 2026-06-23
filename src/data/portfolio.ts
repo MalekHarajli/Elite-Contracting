@@ -20,7 +20,7 @@ export const portfolio = Object.keys(modules)
   .sort()
   .map((path, i) => ({
     src: modules[path],
-    alt: `Elite Contracting completed project ${i + 1}`,
+    alt: `Elite Contracting home remodeling project ${i + 1} in Metro Detroit`,
   }))
 
 /** Best/first image, used as the hero background. */
