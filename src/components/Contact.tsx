@@ -43,7 +43,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-white/10 bg-black py-24 sm:py-32">
+    <section id="contact" className="bg-paper py-28 sm:py-36">
       <div className="container-px">
         <SectionHeading
           eyebrow="Get In Touch"
@@ -54,8 +54,8 @@ export default function Contact() {
         <div ref={ref} className="reveal mt-16 grid gap-10 lg:grid-cols-5 lg:gap-14">
           {/* Contact info */}
           <div className="lg:col-span-2">
-            <h3 className="heading text-2xl text-white">Talk to Elite Contracting</h3>
-            <p className="mt-3 text-white/70">
+            <h3 className="heading text-2xl text-ink">Talk to Elite Contracting</h3>
+            <p className="mt-3 text-ink/60">
               Prefer to talk it through? Call or message us any time — we’re here 24/7.
             </p>
 
@@ -94,8 +94,8 @@ export default function Contact() {
             {status === 'success' ? (
               <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-accent/30 bg-accent/5 p-10 text-center">
                 <CheckCircle2 className="h-14 w-14 text-accent" aria-hidden="true" />
-                <h3 className="heading mt-4 text-2xl text-white">Thank you!</h3>
-                <p className="mt-2 max-w-sm text-white/70">
+                <h3 className="heading mt-4 text-2xl text-ink">Thank you!</h3>
+                <p className="mt-2 max-w-sm text-ink/60">
                   Your request is in. We’ll be in touch shortly. Need us sooner? Call{' '}
                   <a href={site.phoneHref} className="font-semibold text-accent">
                     {site.phoneDisplay}
@@ -105,7 +105,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={() => setStatus('idle')}
-                  className="mt-6 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                  className="mt-6 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-ink/5"
                 >
                   Send another message
                 </button>
@@ -113,7 +113,7 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8"
+                className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm sm:p-8"
                 noValidate
               >
                 {/* Honeypot — hidden from users, catches bots */}
@@ -149,7 +149,7 @@ export default function Contact() {
                         Select a service…
                       </option>
                       {serviceOptions.map((opt) => (
-                        <option key={opt} value={opt} className="bg-ink">
+                        <option key={opt} value={opt}>
                           {opt}
                         </option>
                       ))}
@@ -171,7 +171,7 @@ export default function Contact() {
                 </div>
 
                 {status === 'error' && (
-                  <p className="mt-4 flex items-center gap-2 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                  <p className="mt-4 flex items-center gap-2 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
                     <AlertCircle className="h-5 w-5 flex-none" aria-hidden="true" />
                     {errorMsg}
                   </p>
@@ -192,7 +192,7 @@ export default function Contact() {
                   )}
                 </button>
 
-                <p className="mt-3 text-center text-xs text-white/40">
+                <p className="mt-3 text-center text-xs text-ink/40">
                   By submitting you agree to be contacted about your project.
                 </p>
               </form>
@@ -205,7 +205,7 @@ export default function Contact() {
 }
 
 const inputClass =
-  'w-full rounded-lg border border-white/15 bg-ink/60 px-4 py-3 text-white placeholder:text-white/35 transition-colors focus:border-accent focus:bg-ink'
+  'w-full rounded-lg border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink/35 transition-colors focus:border-accent'
 
 function Field({
   label,
@@ -218,7 +218,7 @@ function Field({
 }) {
   return (
     <label htmlFor={htmlFor} className="block">
-      <span className="mb-2 block text-sm font-medium text-white/80">{label}</span>
+      <span className="mb-2 block text-sm font-medium text-ink/70">{label}</span>
       {children}
     </label>
   )
@@ -239,8 +239,8 @@ function ContactItem({
         {icon}
       </span>
       <span className="flex flex-col">
-        <span className="text-xs uppercase tracking-wide text-white/45">{label}</span>
-        <span className="text-base text-white/90">{children}</span>
+        <span className="text-xs uppercase tracking-wide text-ink/45">{label}</span>
+        <span className="text-base text-ink/90">{children}</span>
       </span>
     </li>
   )

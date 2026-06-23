@@ -10,12 +10,12 @@
   }
 
   body {
-    @apply bg-ink text-white font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased;
   }
 
   /* Visible, on-brand focus ring for keyboard users */
   :focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper;
   }
 
   ::selection {
@@ -30,6 +30,12 @@
 
   .heading {
     @apply font-display font-bold tracking-tight;
+  }
+
+  /* Subtle dot texture for the dark hero / feature bands */
+  .dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
   /* Scroll-reveal: hidden until .is-visible is added by IntersectionObserver */

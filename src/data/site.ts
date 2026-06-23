@@ -20,7 +20,7 @@ export const site = {
   tagline: 'Premium Residential Construction & Remodeling',
   phoneDisplay: '(313) 244-2000',
   phoneHref: 'tel:+13132442000',
-  email: 'malekharajli2003@gmail.com',
+  email: 'Mawassi24@gmail.com',
   instagram: 'https://www.instagram.com/elitecontracting.mi/',
   instagramHandle: '@elitecontracting.mi',
   googleReviewsUrl: 'https://www.google.com/search?q=Elite+Contracting+Dearborn+Heights',

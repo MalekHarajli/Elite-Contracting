@@ -5,23 +5,21 @@ import { heroImage } from '../data/portfolio'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
-      {/* Background image (best portfolio shot), darkened */}
-      <div className="absolute inset-0 -z-10">
-        {heroImage && (
-          <img
-            src={heroImage}
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
-      </div>
+    <section id="home" className="relative isolate overflow-hidden bg-ink">
+      {/* Decorative background: dot texture + red accent glow (no full-bleed photo) */}
+      <div className="dot-grid absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
+      <div
+        className="absolute -right-32 -top-32 -z-10 h-[520px] w-[520px] rounded-full bg-accent/25 blur-[130px]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent"
+        aria-hidden="true"
+      />
 
-      <div className="container-px py-28">
-        <div className="max-w-3xl">
+      <div className="container-px grid items-center gap-14 pb-24 pt-36 lg:min-h-[88vh] lg:grid-cols-2 lg:gap-12 lg:pt-40">
+        {/* Copy */}
+        <div className="max-w-2xl">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white/80 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             {site.tagline}
@@ -31,7 +29,7 @@ export default function Hero() {
             {hero.headline}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{hero.subhead}</p>
+          <p className="mt-6 max-w-xl text-lg text-white/70 sm:text-xl">{hero.subhead}</p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <Link
@@ -50,7 +48,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-2 text-sm text-white/70">
+          <div className="mt-10 flex items-center gap-2 text-sm text-white/60">
             <span className="flex" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-accent text-accent" />
@@ -59,6 +57,29 @@ export default function Hero() {
             <span>{hero.trustLine}</span>
           </div>
         </div>
+
+        {/* Small framed accent image (kept modest so source resolution stays sharp) */}
+        {heroImage && (
+          <div className="relative hidden lg:block">
+            <div
+              className="absolute -inset-5 -z-10 rounded-[2rem] bg-accent/20 blur-2xl"
+              aria-hidden="true"
+            />
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50">
+              <img
+                src={heroImage}
+                alt="Recent Elite Contracting project"
+                loading="eager"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-5 -left-5 rounded-xl border border-white/10 bg-ink/90 px-5 py-3 backdrop-blur">
+              <p className="heading text-2xl text-white">{site.rating}<span className="text-accent">★</span></p>
+              <p className="text-xs uppercase tracking-wide text-white/60">Google Rated</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -7,7 +7,14 @@ export default function About() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="bg-ink py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden bg-ink py-28 sm:py-36">
+      {/* Texture + accent glow to make this the one standout dark band */}
+      <div className="dot-grid absolute inset-0 -z-10 opacity-50" aria-hidden="true" />
+      <div
+        className="absolute -left-32 top-1/3 -z-10 h-[460px] w-[460px] rounded-full bg-accent/15 blur-[130px]"
+        aria-hidden="true"
+      />
+
       <div
         ref={ref}
         className="reveal container-px grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
@@ -19,7 +26,7 @@ export default function About() {
           <h2 className="heading text-4xl text-white sm:text-5xl">
             We build like it’s our own home.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-white/75">{about.blurb}</p>
+          <p className="mt-6 text-lg leading-relaxed text-white/70">{about.blurb}</p>
 
           <Link
             to="/contact"
@@ -33,7 +40,7 @@ export default function About() {
           {about.values.map((value) => (
             <li
               key={value}
-              className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-5"
+              className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-5"
             >
               <span className="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent text-white">
                 <Check className="h-4 w-4" aria-hidden="true" />
@@ -44,7 +51,7 @@ export default function About() {
         </ul>
       </div>
 
-      <p className="container-px mt-12 text-center text-sm uppercase tracking-widest text-white/40">
+      <p className="container-px mt-14 text-center text-sm uppercase tracking-widest text-white/40">
         {site.hours} · Licensed &amp; Insured · {site.serviceArea}
       </p>
     </section>

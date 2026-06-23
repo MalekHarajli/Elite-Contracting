@@ -16,10 +16,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-white/10 bg-ink/90 backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-white/85 backdrop-blur-md transition-all duration-300 ${
+        scrolled ? 'border-ink/10 shadow-sm' : 'border-transparent'
       }`}
     >
       <div
@@ -27,14 +25,16 @@ export default function Header() {
           scrolled ? 'h-16' : 'h-20'
         }`}
       >
-        {/* Logo */}
+        {/* Logo (on a dark chip so a light logo stays readable on white) */}
         <Link to="/" className="flex items-center gap-3" aria-label={`${site.name} home`}>
-          <img
-            src="/logo.png"
-            alt={`${site.name} logo`}
-            className={`w-auto transition-all duration-300 ${scrolled ? 'h-9' : 'h-11'}`}
-          />
-          <span className="heading hidden text-lg leading-none text-white sm:block">
+          <span className="inline-flex items-center justify-center rounded-lg bg-ink p-1.5">
+            <img
+              src="/logo.png"
+              alt={`${site.name} logo`}
+              className={`w-auto transition-all duration-300 ${scrolled ? 'h-8' : 'h-9'}`}
+            />
+          </span>
+          <span className="heading hidden text-lg leading-none text-ink sm:block">
             ELITE<span className="text-accent"> CONTRACTING</span>
           </span>
         </Link>
@@ -47,8 +47,8 @@ export default function Header() {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-white ${
-                  isActive ? 'text-accent' : 'text-white/80'
+                `text-sm font-medium transition-colors hover:text-accent ${
+                  isActive ? 'text-accent' : 'text-ink/70'
                 }`
               }
             >
@@ -64,7 +64,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Elite Contracting on Instagram"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-accent hover:text-accent"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:border-accent hover:text-accent"
           >
             <Instagram className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -81,7 +81,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-ink lg:hidden"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
           >
@@ -93,7 +93,7 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <nav
-          className="border-t border-white/10 bg-ink/95 backdrop-blur-md lg:hidden"
+          className="border-t border-ink/10 bg-white lg:hidden"
           aria-label="Mobile"
         >
           <div className="container-px flex flex-col py-2">
@@ -104,8 +104,8 @@ export default function Header() {
                 end={item.to === '/'}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `border-b border-white/5 py-3 text-base font-medium transition-colors hover:text-white ${
-                    isActive ? 'text-accent' : 'text-white/80'
+                  `border-b border-ink/5 py-3 text-base font-medium transition-colors hover:text-accent ${
+                    isActive ? 'text-accent' : 'text-ink/80'
                   }`
                 }
               >
@@ -117,7 +117,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-2 py-3 text-base font-medium text-white/80 transition-colors hover:text-white"
+              className="flex items-center gap-2 py-3 text-base font-medium text-ink/80 transition-colors hover:text-accent"
             >
               <Instagram className="h-5 w-5" aria-hidden="true" /> Instagram
             </a>

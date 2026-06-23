@@ -5,15 +5,15 @@ import { site } from '../data/site'
 /** Closing call-to-action on the Home page, linking to the other pages. */
 export default function CtaBand() {
   return (
-    <section className="border-t border-white/10 bg-black py-24 sm:py-28">
+    <section className="bg-white py-28 sm:py-32">
       <div className="container-px text-center">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Ready When You Are
         </p>
-        <h2 className="heading mx-auto max-w-2xl text-4xl text-white sm:text-5xl">
+        <h2 className="heading mx-auto max-w-2xl text-4xl text-ink sm:text-5xl">
           Let’s build something you’ll be proud of.
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
+        <p className="mx-auto mt-5 max-w-xl text-lg text-ink/60">
           Browse our recent work, then reach out for a free, no-pressure quote.
         </p>
 
@@ -27,14 +27,14 @@ export default function CtaBand() {
           </Link>
           <Link
             to="/portfolio"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-white/10"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-7 py-4 text-base font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             <Images className="h-5 w-5" aria-hidden="true" />
             View Portfolio
           </Link>
           <a
             href={site.phoneHref}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-white/10"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-7 py-4 text-base font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
             Call Now
